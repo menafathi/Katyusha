@@ -1,1 +1,0 @@
-Katyusha for ElarabyGroup.com
