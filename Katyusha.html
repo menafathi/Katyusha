@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8" />
+    <title>Katyusha</title>
+    <link rel="icon" type="image/x-icon" href="images/gog.png">
+    <link href="pages/bootstrap.min.css" rel="stylesheet">
+    <link href="pages/offcanves.css" rel="stylesheet">
+    <style>
+       .navbar-nav {
+           display: flex;
+           justify-content: space-between; /* توزيع العناصر بالتساوي */
+           flex-wrap: wrap; /* السماح للعناصر بالانتقال إلى السطر التالي إذا لزم الأمر */
+       }
+       
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #f0f2f5;
+            direction: rtl;
+            flex-direction: column;
+            align-items: center;
+        }
+        .content {
+            padding: 10px;
+            align-items: center;
+            text-align: center;
+        }
+        .table-container {
+            margin-top: 20px;
+            width: 100%; /* عرض الجدول */
+            overflow-x: auto; /* تمكين التمرير الأفقي إذا لزم الأمر */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse; /* دمج الحدود */
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd; /* حدود الخلايا */
+            padding: 0px; /* حشو الخلايا */
+            text-align: right; /* محاذاة النص إلى اليمين */
+        }
+        th {
+            background-color: #007bff; /* لون خلفية رأس الجدول */
+            color: white; /* لون النص في رأس الجدول */
+        }
+        .copyright {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 14px;
+            color: #555;
+        }
+		.modal {
+  display: none; /* مخفي بشكل افتراضي */
+  position: fixed; /* يبقى في مكانه */
+  z-index: 1000; /* فوق كل العناصر الأخرى */
+  left: 0;
+  top: 0;
+  width: 100%; /* عرض كامل */
+  height: 100%; /* ارتفاع كامل */
+  overflow: auto; /* تمكين التمرير إذا لزم الأمر */
+  background-color: rgba(0, 0, 0, 0.8); /* خلفية داكنة مع شفافية */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto; /* تقليل المسافة من الأعلى */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 70%; /* زيادة عرض النافذة */
+  max-width: 900px; /* زيادة الحد الأقصى للعرض */
+  height: 70%; /* زيادة ارتفاع النافذة */
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+ iframe {
+        width: 90px; /* عرض كامل */
+        height: 40vh; /* ارتفاع 80% من ارتفاع الشاشة */
+        border: none; /* إزالة الحدود */
+ }
+ 
+       
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-dark sticky-top">
+
+  <div class="container">
+    <a class="navbar-brand" href="Katyusha.html">
+    <img src="images/m.png" alt="Logo" style="height: 40px; margin-left: auto; margin-right: 10px;">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item"><a class="nav-link text-white" href="pages/customers.html">بيانات العملاء</a></li>
+      <li class="nav-item"><a class="nav-link text-white" href="pages/tasks.html">Tasks</a></li>
+      <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle text-white" href="#" id="equipmentsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        التجهيزات
+      </a>
+        <div class="dropdown-menu" aria-labelledby="equipmentsDropdown">
+		<a class="dropdown-item" href="pages/equipments.html">التجهيزات</a>
+        <a class="dropdown-item" href="pages/tex.html">تكاليف اضافية للتركيب</a>
+        <a class="dropdown-item" href="pages/on.html">طرق التشغيل</a>
+        <a class="dropdown-item" href="pages/SELES.html">عملاء التجزئة المسموح لهم بتركيب بدون تكلفة</a>
+      </div>
+      </li>
+      <li class="nav-item"><a class="nav-link text-white" href="pages/models.html">موديلات</a></li>
+      <li class="nav-item"><a class="nav-link text-white" href="pages/crm.html">تعليمات البلاغات</a></li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-white" href="#" id="repairDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          اصلاح عبر الهاتف
+        </a>
+        <div class="dropdown-menu" aria-labelledby="repairDropdown">
+          <a class="dropdown-item" href="pages/Repair.html">اصلاح عبر الهاتف</a>
+          <a class="dropdown-item" href="pages/Repeatedquestions.html">اسئلة متكررة</a>
+		  <a class="dropdown-item" href="pages/tex.html">تكاليف</a>
+		  <a class="dropdown-item" href="pages/level.html">مواعيد</a>
+		  <a class="dropdown-item" href="pages/WarrantyInquiry.html">استعلام عن جهاز خارج الضمان</a>
+		  <a class="dropdown-item" href="pages/contacts.html">عناوين و ارقام الشركة</a>
+		  <a class="dropdown-item" href="pages/central.html">اماكن الزيارة المنزلية متاحة بنسبة للمحافظات و الاماكن المحظورة</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-white" href="#" id="consumablesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          مستهلاكات
+        </a>
+        <div class="dropdown-menu" aria-labelledby="consumablesDropdown">
+          <a class="dropdown-item" href="pages/consumables.html">مستهلاكات</a>
+          <a class="dropdown-item" href="pages/contacts.html">عناوين و ارقام الشركة</a>
+          <a class="dropdown-item" href="pages/ServiceCenters.html">مراكز الخدمة المعتمدة</a>
+        </div>
+      </li>
+    </ul>
+    <button id="toggleSidebar" style="margin-right: 20px;">
+      <i class="fas fa-sticky-note"></i>الملاحظات
+    </button>
+  </div>
+ </div>
+</nav>
+ <div id="modal" class="modal">
+  <div class="modal-content"style="border-radius: 25px;>
+    <span class="close" id="closeModal">&times;</span>
+    <h2>ملاحظات</h2>
+    <iframe id="noteIframe" src="pages/note.html" style="width:100%;height:70%;border-radius: 15px;" style="border: none;"></iframe>
+  </div>
+</div>
+    <div class="content">
+        <h1>Katyusha</h1>
+		<br>
+        <p>تعليمات لي تشغيل التطبيق</p>
+		<br>
+    <div class="iframe-container" style=" overflow: hidden; border-radius: 15px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);">
+        <iframe src="images/Guide.pdf#zoom=80" style="width: 100%; height: 65vh; border: none; border-radius: 15px; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'"></iframe>
+    </div>
+	<br>
+<a href="pages/Repair.html" style="    text-decoration:none;font-size:30px;">للتشغيل اضغط هنا</a>
+<br>
+    <div class="copyright">
+	<h1>تمت البرمجة بوسطة : م/مينا فتحي ارمانيوس متري</h1>
+    </div>
+	   <script src="pages/jquery-3.5.1.slim.min.js"></script>
+  <script src="pages/popper.min.js"></script>
+  <script src="pages/bootstrap.min.js"></script> 
+<script>
+	document.getElementById("toggleSidebar").addEventListener("click", function() {
+  const modal = document.getElementById("modal");
+  modal.style.display = "block"; // فتح النافذة المنبثقة
+  loadNotes(); // تحميل المحتوى عند فتح النافذة
+});
+
+document.getElementById("closeModal").addEventListener("click", function() {
+  const modal = document.getElementById("modal");
+  modal.style.display = "none"; // إغلاق النافذة المنبثقة
+});
+
+window.addEventListener("click", function(event) {
+  const modal = document.getElementById("modal");
+  if (event.target == modal) {
+    modal.style.display = "none"; // إغلاق النافذة عند النقر خارجها
+  }
+});
+
+function loadNotes() {
+  fetch("pages/note.html")
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.text();
+    })
+    .then(data => {
+      document.getElementById("dynamicContent").innerHTML = data;
+    })
+    .catch(error => {
+      console.error("There was a problem with the fetch operation:", error);
+      document.getElementById("dynamicContent").innerHTML = "<p>حدث خطأ أثناء تحميل المحتوى.</p>";
+    });
+}
+</script>
+</body>
+</html>
